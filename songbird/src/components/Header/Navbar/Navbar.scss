@@ -1,0 +1,33 @@
+@import '../../../values.scss';
+
+.navbar {
+    background-color:$second-color;
+    padding:0;
+    font-size:20px;
+    line-height: 1.4rem;
+    font-weight: 400;
+    border-radius: 5px;
+    margin-top:1rem;
+    .navbar-nav {
+        width:100%;
+        display: flex;
+        justify-content: space-between;
+        .nav-link {
+            color:$text-color !important;
+            padding-left:1.5rem;
+            padding-right:1.5rem;
+            &:first-child {
+                border-top-left-radius: 5px;
+                border-bottom-left-radius: 5px;
+            }
+            &:last-child {
+                border-top-right-radius: 5px;
+                border-bottom-right-radius: 5px;
+            }
+            &.active {
+                color:$second-text-color !important;
+                background-color:#E65C5A;
+            }
+        }
+    }
+}
