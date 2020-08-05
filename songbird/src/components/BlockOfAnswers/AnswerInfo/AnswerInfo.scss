@@ -1,0 +1,15 @@
+@import '../../../values.scss';
+
+.answer-info-container {
+    background-color: $color-for-blocks;
+    width:48.5%;
+    height:20rem;
+    border-radius: 5px;
+    margin-top:1.5rem;
+    border:1px solid $border-color;
+    padding:1.3rem 1.3rem;
+    .initial-info {
+        font-size:18px;
+        line-height: 1rem;
+    }
+}

@@ -1,0 +1,39 @@
+@import '../../../../values.scss';
+
+
+.bird-info-container {
+    .bird-short-info {
+        display: flex;
+        flex-direction: row;
+        .bird-info-image {
+            width:200px;
+            height:155px;
+        }
+        .short-text-info {
+            padding-top:0.3rem;
+            margin-left:2rem;
+            width:50%;
+            line-height: 1rem;
+            .bird-name {
+                font-weight: bold;
+            }
+            hr {
+               margin-top:1rem;
+               margin-bottom:0.75rem;
+            }
+            .scientific-bird-name {
+                font-size:18px;
+            }
+            .bird-voice {
+                margin-top:0.3rem;
+                width:100%;
+                height:2.5rem;
+            }
+        }
+    }
+    .bird-detailed-info {
+        font-size:16px;
+        line-height: 1.4rem;
+        margin-top:1.3rem;
+    }
+}

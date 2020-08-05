@@ -12,7 +12,7 @@ export class Header extends Component {
     render() {
         return (
             <div className = "header">
-                <div class = "header-top">
+                <div className = "header-top">
                     <img className = "logo" alt = "logo" src = {logo}/>
                     <span className = "score">Score: {this.props.score}</span>
                 </div>
