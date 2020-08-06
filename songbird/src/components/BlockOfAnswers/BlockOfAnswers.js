@@ -12,7 +12,7 @@ export class BlockOfAnswers extends Component {
     render() {
         return (
             <div className = "answer-block-container">
-                <PossibleAnswers/>
+                <PossibleAnswers currentPageNumber = {this.props.currentPageNumber}/>
                 <AnswerInfo/>
             </div>
         )

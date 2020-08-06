@@ -1,11 +1,28 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import './PossibleAnswers.scss';
+import axios from 'axios';
 
 export class Answer extends Component {
     static defaultProps = {
 
     }
+
+    constructor(props) {
+        super(props);
+        this.state = {
+
+        }
+    }
+
+  /*   async componentDidMount() {
+        const res = await axios.get('');
+        const data = res.data;
+        this.setState({
+
+        });
+    }
+ */
 
     render() {
         return (
