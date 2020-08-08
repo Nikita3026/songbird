@@ -10,9 +10,10 @@ export class NextLevelButton extends Component {
             <button
             type = "button"
             className = {className}
-            onClick = {() => this.props.handleClick()}
+            onClick = {this.props.handleClick}
             disabled = {!this.props.isButtonActive}
-            >Next Level</button>
+            data-key = {this.props.dataKey}
+            >{this.props.value}</button>
         )
     }
 }

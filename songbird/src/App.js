@@ -1,8 +1,9 @@
-import React, {Component} from 'react';
+import React, {Component, Fragment} from 'react';
 import Header from './components/Header/Header';
 import CurrentQuestion from './components/CurrentQuestion/CurrentQuestion';
 import BlockOfAnswers from './components/BlockOfAnswers/BlockOfAnswers';
 import NextLevelButton from './components/NextLevelButton/NextLevelButton';
+import EndNotification from './components/EndNotification/EndNotification';
 
 export class App extends Component {
   constructor(props) {
@@ -12,7 +13,8 @@ export class App extends Component {
       score:0,
       rightAnswer:null,
       isNextLevelButtonActive:false,
-      didTheUserAnswer:false
+      didTheUserAnswer:false,
+      isEndNotificationNeed:false
     }
 
     this.changePageNumber = this.changePageNumber.bind(this);
@@ -20,15 +22,35 @@ export class App extends Component {
     this.changeNextLevelButtonActivity = this.changeNextLevelButtonActivity.bind(this);
     this.changeUserAnswerStatus = this.changeUserAnswerStatus.bind(this);
     this.changeScore = this.changeScore.bind(this);
+    this.renderMainBody = this.renderMainBody.bind(this);
   }
 
-  changePageNumber() {
+  changePageNumber({target}) {
       const newPageNumber = this.state.currentPageNumber + 1;
-      this.setState({
-        currentPageNumber: (newPageNumber>5) ? (newPageNumber- 6) : newPageNumber
-      });
-      this.changeNextLevelButtonActivity();
-      this.changeUserAnswerStatus();
+
+      if(newPageNumber <= 5) {
+        this.setState({
+          currentPageNumber: newPageNumber
+        });
+        this.changeUserAnswerStatus();
+      }
+      else this.changeNotificationNeed(true);
+
+      if(target.dataset.key === '1') {
+        this.setState({
+          currentPageNumber: newPageNumber - 6
+        });
+        this.changeScore(-this.state.score);
+        this.changeNotificationNeed(false);
+      } else {
+        this.changeNextLevelButtonActivity();
+      }
+  }
+
+  changeNotificationNeed(value) {
+    this.setState({
+      isEndNotificationNeed: value
+    });
   }
 
   setRightAnswer(randomAnswer) {
@@ -55,13 +77,15 @@ export class App extends Component {
     })
   }
 
-  render(){
+  renderMainBody () {
+    if(this.state.isEndNotificationNeed) {
+      return <EndNotification
+      score = {this.state.score}
+      handleClick = {this.changePageNumber}
+      />;
+    }
     return (
-      <div className = "container">
-        <Header
-          score = {this.state.score}
-          currentPageNumber = {this.state.currentPageNumber}
-        />
+      <Fragment>
         <CurrentQuestion/>
         <BlockOfAnswers
         currentPageNumber = {this.state.currentPageNumber}
@@ -75,7 +99,20 @@ export class App extends Component {
         <NextLevelButton
         handleClick = {this.changePageNumber}
         isButtonActive = {this.state.isNextLevelButtonActive}
+        value = "Следующий уровень"
+        dataKey = {0}
         />
+      </Fragment>)
+  }
+
+  render(){
+    return (
+      <div className = "container">
+        <Header
+          score = {this.state.score}
+          currentPageNumber = {this.state.currentPageNumber}
+        />
+        <this.renderMainBody/>
       </div>
     );
   }
