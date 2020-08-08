@@ -14,7 +14,8 @@ export class App extends Component {
       rightAnswer:null,
       isNextLevelButtonActive:false,
       didTheUserAnswer:false,
-      isEndNotificationNeed:false
+      isEndNotificationNeed:false,
+      isItNeedToDisableAnswers:false,
     }
 
     this.changePageNumber = this.changePageNumber.bind(this);
@@ -23,11 +24,11 @@ export class App extends Component {
     this.changeUserAnswerStatus = this.changeUserAnswerStatus.bind(this);
     this.changeScore = this.changeScore.bind(this);
     this.renderMainBody = this.renderMainBody.bind(this);
+    this.changeDisabledStatusOfAnswers = this.changeDisabledStatusOfAnswers.bind(this);
   }
 
   changePageNumber({target}) {
       const newPageNumber = this.state.currentPageNumber + 1;
-
       if(newPageNumber <= 5) {
         this.setState({
           currentPageNumber: newPageNumber
@@ -44,7 +45,9 @@ export class App extends Component {
         this.changeNotificationNeed(false);
       } else {
         this.changeNextLevelButtonActivity();
+        this.changeDisabledStatusOfAnswers();
       }
+
   }
 
   changeNotificationNeed(value) {
@@ -77,6 +80,12 @@ export class App extends Component {
     })
   }
 
+  changeDisabledStatusOfAnswers() {
+    this.setState({
+      isItNeedToDisableAnswers: !this.state.isItNeedToDisableAnswers
+    })
+  }
+
   renderMainBody () {
     if(this.state.isEndNotificationNeed) {
       return <EndNotification
@@ -95,6 +104,8 @@ export class App extends Component {
         didTheUserAnswer = {this.state.didTheUserAnswer}
         changeUserAnswerStatus = {this.changeUserAnswerStatus}
         changeScore = {this.changeScore}
+        isItNeedToDisableAnswers = {this.state.isItNeedToDisableAnswers}
+        changeDisabledStatusOfAnswers = {this.changeDisabledStatusOfAnswers}
         />
         <NextLevelButton
         handleClick = {this.changePageNumber}

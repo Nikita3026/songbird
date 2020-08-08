@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import './BirdInfo.scss';
-import birdImage from '../../../../assets/defaultBirdImage.png';
+import birdImage from '../../../../assets/img/defaultBirdImage.png';
 import BirdSound from '../../../CurrentQuestion/BirdSound';
+import Player from '../../../AudioPlayer/AudioPlayer';
 
 export class BirdInfo extends Component {
     static defaultProps = {
@@ -19,7 +20,8 @@ export class BirdInfo extends Component {
                         <hr color = "white"/>
                         <span className = "scientific-bird-name">Dellichon urbicum</span>
                         <hr color = "white"/>
-                        <BirdSound/>
+                        {Player()}
+                        {/* <BirdSound/> */}
                     </div>
                 </div>
                 <p className = "bird-detailed-info">Для ласточек характерно негромкое щебетание. Песни ласточек не смолкают на протяжении всего лета. Исследователи различают у птиц до 6 щебечущих звуков: «вит», «ви-вит», «чивит», «чиривит» и т.п. Ласточки любят петь дуэтом.</p>

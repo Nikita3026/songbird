@@ -50,7 +50,11 @@ export class PossibleAnswers extends Component {
         const shuffledArray = this.shuffleAnswers(answerOptions);
         this.answersArray = shuffledArray;
         return shuffledArray.map((item) => {
-            return <Answer key = {item.id} id = {item.id} value = {item.cyrillicName}/>
+            return <Answer
+            key = {item.id}
+            id = {item.id}
+            value = {item.cyrillicName}
+            />
         });
     }
 

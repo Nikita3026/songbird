@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types';
 import './CurrentQuestion.scss';
-import defaultBirdImage from '../../assets/defaultBirdImage.png';
+import defaultBirdImage from '../../assets/img/defaultBirdImage.png';
 import UnspokenWord from './UnspokenWord';
 import BirdSound from './BirdSound';
+import Player from '../AudioPlayer/AudioPlayer';
 
 export class CurrentQuestion extends Component {
     static defaultProps = {
@@ -19,7 +20,8 @@ export class CurrentQuestion extends Component {
                 <div className = "current-question-inner">
                     <UnspokenWord/>
                     <hr color = "white"/>
-                    <BirdSound/>
+                    {Player()}
+                 {/*    <BirdSound/> */}
                 </div>
             </div>
         )
