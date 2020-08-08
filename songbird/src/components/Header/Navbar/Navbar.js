@@ -10,7 +10,7 @@ export class Navbar extends Component {
             return <NavItem
             key = {idx}
             value = {item}
-            isLinkActive = {idx === 0? true:false}
+            isLinkActive = {idx === this.props.currentPageNumber ? true:false}
             />
         });
         return navlinkItems;
@@ -27,6 +27,11 @@ export class Navbar extends Component {
             </nav>
         )
     }
+}
+
+
+Navbar.propTypes = {
+    currentPageNumber:PropTypes.number.isRequired
 }
 
 export default Navbar;

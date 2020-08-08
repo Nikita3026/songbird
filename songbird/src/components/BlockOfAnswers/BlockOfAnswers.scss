@@ -3,4 +3,11 @@
 .answer-block-container {
     display:flex;
     justify-content: space-between;
+
+    .right-answer {
+        background-color:$right-answer-color !important;
+    }
+    .wrong-answer {
+        background-color: $wrong-answer-color !important;
+    }
 }

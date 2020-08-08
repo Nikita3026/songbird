@@ -11,13 +11,13 @@ export class AnswerInfo extends Component {
 
     constructor(props){
         super(props);
-        this.state = {
+       /*  this.state = {
             didTheUserAnswer:false
-        }
+        } */
     }
 
     fillBlock() {
-        if(this.state.didTheUserAnswer) {
+        if(this.props.didTheUserAnswer) {
             return <BirdInfo/>;
         }
         return <InitialInfo/>;
@@ -30,6 +30,10 @@ export class AnswerInfo extends Component {
             </div>
         )
     }
+}
+
+AnswerInfo.propTypes = {
+    didTheUserAnswer:PropTypes.bool
 }
 
 export default AnswerInfo

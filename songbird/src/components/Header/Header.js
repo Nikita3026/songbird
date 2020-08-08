@@ -16,14 +16,17 @@ export class Header extends Component {
                     <img className = "logo" alt = "logo" src = {logo}/>
                     <span className = "score">Score: {this.props.score}</span>
                 </div>
-                <Navbar/>
+                <Navbar
+                    currentPageNumber = {this.props.currentPageNumber}
+                />
             </div>
         )
     }
 }
 
 Header.propTypes = {
-    score: PropTypes.number.isRequired
+    score: PropTypes.number.isRequired,
+    currentPageNumber: PropTypes.number.isRequired
 }
 
 
