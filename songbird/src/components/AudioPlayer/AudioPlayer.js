@@ -2,12 +2,11 @@ import React from 'react';
 import AudioPlayer from 'react-h5-audio-player';
 import 'react-h5-audio-player/src/styles.scss';
 import './AudioPlayer.scss';
-import test from '../../assets/audio/success.mp3';
 
 
-const Player = () => (
+const Player = (src) => (
     <AudioPlayer
-    src={test}
+    src={src}
     customAdditionalControls={[]}
     customVolumeControls={[]}
     showJumpControls={false}

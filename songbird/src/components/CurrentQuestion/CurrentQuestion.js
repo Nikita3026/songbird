@@ -1,35 +1,57 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import PropTypes from 'prop-types';
 import './CurrentQuestion.scss';
 import defaultBirdImage from '../../assets/img/defaultBirdImage.png';
 import UnspokenWord from './UnspokenWord';
-import BirdSound from './BirdSound';
 import Player from '../AudioPlayer/AudioPlayer';
 
 export class CurrentQuestion extends Component {
-    static defaultProps = {
+constructor(props) {
+    super(props);
+    this.renderMainBody = this.renderMainBody.bind(this);
+    this.renderImage = this.renderImage.bind(this);
+}
 
+    renderImage() {
+        let imageSrc;
+        if(this.props.isItNeedToOpenRightAnswerInfo){
+            imageSrc = this.props.rightAnswer.image;
+        } else imageSrc = defaultBirdImage;
+        return <img className = "question-image" src = {imageSrc} alt = "question-image"/>;
     }
+
+    renderMainBody() {
+        if(this.props.rightAnswer !== null) {
+            return (<Fragment>
+                 <div className = "current-question">
+                <div className = "question-image-container">
+                    <this.renderImage/>
+                </div>
+                <div className = "current-question-inner">
+                    <UnspokenWord
+                        rightAnswer = {this.props.rightAnswer}
+                        isItNeedToOpenRightAnswerInfo = {this.props.isItNeedToOpenRightAnswerInfo}
+                    />
+                    <hr color = "white"/>
+                    {Player(this.props.rightAnswer.audio)}
+                </div>
+            </div>
+            </Fragment>)
+        }
+        return null;
+    }
+
 
     render() {
         return (
-            <div className = "current-question">
-                <div className = "question-image-container">
-                    <img className = "question-image" src = {defaultBirdImage} alt = "question-image" />
-                </div>
-                <div className = "current-question-inner">
-                    <UnspokenWord/>
-                    <hr color = "white"/>
-                    {Player()}
-                 {/*    <BirdSound/> */}
-                </div>
-            </div>
+            <this.renderMainBody/>
         )
     }
 }
 
 CurrentQuestion.propTypes = {
-
+    rightAnswer: PropTypes.object,
+    isItNeedToOpenRightAnswerInfo: PropTypes.bool.isRequired
 }
 
 

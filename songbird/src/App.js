@@ -5,6 +5,7 @@ import BlockOfAnswers from './components/BlockOfAnswers/BlockOfAnswers';
 import NextLevelButton from './components/NextLevelButton/NextLevelButton';
 import EndNotification from './components/EndNotification/EndNotification';
 
+
 export class App extends Component {
   constructor(props) {
     super(props);
@@ -16,6 +17,7 @@ export class App extends Component {
       didTheUserAnswer:false,
       isEndNotificationNeed:false,
       isItNeedToDisableAnswers:false,
+      isItNeedToOpenRightAnswerInfo:false
     }
 
     this.changePageNumber = this.changePageNumber.bind(this);
@@ -25,6 +27,7 @@ export class App extends Component {
     this.changeScore = this.changeScore.bind(this);
     this.renderMainBody = this.renderMainBody.bind(this);
     this.changeDisabledStatusOfAnswers = this.changeDisabledStatusOfAnswers.bind(this);
+    this.changeOpenRightAnswerStatus = this.changeOpenRightAnswerStatus.bind(this);
   }
 
   changePageNumber({target}) {
@@ -46,6 +49,7 @@ export class App extends Component {
       } else {
         this.changeNextLevelButtonActivity();
         this.changeDisabledStatusOfAnswers();
+        this.changeOpenRightAnswerStatus();
       }
 
   }
@@ -86,6 +90,12 @@ export class App extends Component {
     })
   }
 
+  changeOpenRightAnswerStatus() {
+    this.setState({
+      isItNeedToOpenRightAnswerInfo: !this.state.isItNeedToOpenRightAnswerInfo
+    })
+  }
+
   renderMainBody () {
     if(this.state.isEndNotificationNeed) {
       return <EndNotification
@@ -95,7 +105,10 @@ export class App extends Component {
     }
     return (
       <Fragment>
-        <CurrentQuestion/>
+        <CurrentQuestion
+          rightAnswer = {this.state.rightAnswer}
+          isItNeedToOpenRightAnswerInfo = {this.state.isItNeedToOpenRightAnswerInfo}
+        />
         <BlockOfAnswers
         currentPageNumber = {this.state.currentPageNumber}
         rightAnswer = {this.state.rightAnswer}
@@ -106,6 +119,7 @@ export class App extends Component {
         changeScore = {this.changeScore}
         isItNeedToDisableAnswers = {this.state.isItNeedToDisableAnswers}
         changeDisabledStatusOfAnswers = {this.changeDisabledStatusOfAnswers}
+        changeOpenRightAnswerStatus = {this.changeOpenRightAnswerStatus}
         />
         <NextLevelButton
         handleClick = {this.changePageNumber}

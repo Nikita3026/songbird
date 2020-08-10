@@ -2,32 +2,30 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import './BirdInfo.scss';
 import birdImage from '../../../../assets/img/defaultBirdImage.png';
-import BirdSound from '../../../CurrentQuestion/BirdSound';
 import Player from '../../../AudioPlayer/AudioPlayer';
 
 export class BirdInfo extends Component {
-    static defaultProps = {
-
-    }
-
     render() {
         return (
             <div className = "bird-info-container">
                 <div className = "bird-short-info">
-                    <img className = "bird-info-image" alt = "bird-info-image" src= {birdImage}/>
+                    <img className = "bird-info-image" alt = "bird-info-image" src= {this.props.answerInfo.image}/>
                     <div className = "short-text-info">
-                        <span className = "bird-name">Ласточка</span>
+                        <span className = "bird-name">{this.props.answerInfo.cyrillicName}</span>
                         <hr color = "white"/>
-                        <span className = "scientific-bird-name">Dellichon urbicum</span>
+                        <span className = "scientific-bird-name">{this.props.answerInfo.latineName}</span>
                         <hr color = "white"/>
-                        {Player()}
-                        {/* <BirdSound/> */}
+                        {Player(this.props.answerInfo.audio)}
                     </div>
                 </div>
-                <p className = "bird-detailed-info">Для ласточек характерно негромкое щебетание. Песни ласточек не смолкают на протяжении всего лета. Исследователи различают у птиц до 6 щебечущих звуков: «вит», «ви-вит», «чивит», «чиривит» и т.п. Ласточки любят петь дуэтом.</p>
+                <p className = "bird-detailed-info">{this.props.answerInfo.description}</p>
             </div>
         )
     }
+}
+
+BirdInfo.propTypes = {
+    answerInfo: PropTypes.array.isRequired
 }
 
 export default BirdInfo;

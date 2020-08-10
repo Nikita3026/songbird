@@ -8,10 +8,6 @@ import successAudio from '../../assets/audio/success.mp3';
 import errorAudio from '../../assets/audio/error.mp3';
 
 export class BlockOfAnswers extends Component {
-    static defaultProps = {
-
-    }
-
     constructor(props) {
         super(props);
         this.counterOfClicks = 0;
@@ -22,7 +18,17 @@ export class BlockOfAnswers extends Component {
         this.errorAudio.src = errorAudio;
 
         this.handleClick = this.handleClick.bind(this);
+        this.changeState = this.changeState.bind(this);
+        this.changeAnswerInfo = this.changeAnswerInfo.bind(this);
+
+        this.state = {
+            arrayOfAnswersSound:[],
+            arrayOfAnswersImages:[],
+            answerInfo:[]
+        }
     }
+
+
 
     handleClick({target}) {
         const realTarget = target.closest('.answer-option');
@@ -34,6 +40,7 @@ export class BlockOfAnswers extends Component {
         if(!this.props.isItNeedToDisableAnswers) {
             this.counterOfClicks++;
             if(peopleAnswer.cyrillicName === this.props.rightAnswer.cyrillicName) {
+                this.props.changeOpenRightAnswerStatus();
                 this.props.changeDisabledStatusOfAnswers();
                 classForIndicator = 'right-answer';
                 this.props.changeScore(this.pointsForCurrentRound);
@@ -45,9 +52,23 @@ export class BlockOfAnswers extends Component {
                 this.pointsForCurrentRound--;
                 this.errorAudio.play();
             }
+            this.changeAnswerInfo(peopleAnswer);
             indicator.classList.add(classForIndicator);
             if(this.counterOfClicks === 1) this.props.changeUserAnswerStatus();
         }
+    }
+
+    changeAnswerInfo(newAnswerInfo) {
+        this.setState({
+            answerInfo:newAnswerInfo
+        })
+    }
+
+    changeState(newSoundsArray, newImagesArray) {
+        this.setState({
+            arrayOfAnswersSound: newSoundsArray,
+            arrayOfAnswersImages: newImagesArray
+        })
     }
 
     render() {
@@ -58,9 +79,11 @@ export class BlockOfAnswers extends Component {
                 rightAnswer = {this.props.rightAnswer}
                 setRightAnswer = {this.props.setRightAnswer}
                 handleClick = {this.handleClick}
+                changeState = {this.changeState}
                 />
                 <AnswerInfo
                     didTheUserAnswer = {this.props.didTheUserAnswer}
+                    answerInfo = {this.state.answerInfo}
                 />
             </div>
         )
@@ -76,7 +99,8 @@ BlockOfAnswers.propTypes = {
     changeUserAnswerStatus: PropTypes.func.isRequired,
     changeScore:PropTypes.func.isRequired,
     isItNeedToDisableAnswers: PropTypes.bool.isRequired,
-    changeDisabledStatusOfAnswers: PropTypes.func.isRequired
+    changeDisabledStatusOfAnswers: PropTypes.func.isRequired,
+    changeOpenRightAnswerStatus: PropTypes.func.isRequired
 }
 
 export default BlockOfAnswers;

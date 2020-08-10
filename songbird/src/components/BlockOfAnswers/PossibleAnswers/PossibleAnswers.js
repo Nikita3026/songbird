@@ -5,10 +5,6 @@ import Answer from './Answer';
 import BirdArray from '../../BirdArray';
 
 export class PossibleAnswers extends Component {
-    static deafultProps = {
-
-    }
-
     state = {
         currentAnswers:null
     }
@@ -71,7 +67,8 @@ PossibleAnswers.propTypes = {
     currentPageNumber:PropTypes.number.isRequired,
     rightAnswer:PropTypes.object,
     setRightAnswer:PropTypes.func.isRequired,
-    handleClick:PropTypes.func.isRequired
+    handleClick:PropTypes.func.isRequired,
+    changeState: PropTypes.func.isRequired
 }
 
 export default PossibleAnswers
