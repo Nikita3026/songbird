@@ -22,18 +22,19 @@ constructor(props) {
 
     renderMainBody() {
         if(this.props.rightAnswer !== null) {
+            const audioSrc = this.props.rightAnswer.audio;
             return (<Fragment>
                  <div className = "current-question">
-                <div className = "question-image-container">
+              {/*   <div className = "question-image-container"> */}
                     <this.renderImage/>
-                </div>
+              {/*   </div> */}
                 <div className = "current-question-inner">
                     <UnspokenWord
                         rightAnswer = {this.props.rightAnswer}
                         isItNeedToOpenRightAnswerInfo = {this.props.isItNeedToOpenRightAnswerInfo}
                     />
                     <hr color = "white"/>
-                    {Player(this.props.rightAnswer.audio)}
+                    {Player(audioSrc)}
                 </div>
             </div>
             </Fragment>)

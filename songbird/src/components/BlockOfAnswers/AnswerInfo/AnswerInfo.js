@@ -5,6 +5,11 @@ import BirdInfo from './BirdInfo/BirdInfo';
 import InitialInfo from './InitialInfo/InitialInfo';
 
 export class AnswerInfo extends Component {
+    constructor(props) {
+        super(props);
+        this.fillBlock = this.fillBlock.bind(this);
+    }
+
     fillBlock() {
         if(this.props.didTheUserAnswer) {
             return <BirdInfo
@@ -15,9 +20,10 @@ export class AnswerInfo extends Component {
     }
 
     render() {
+
         return (
             <div className = "answer-info-container">
-                {this.fillBlock()}
+                <this.fillBlock/>
             </div>
         )
     }
@@ -25,7 +31,7 @@ export class AnswerInfo extends Component {
 
 AnswerInfo.propTypes = {
     didTheUserAnswer:PropTypes.bool,
-    answerInfo: PropTypes.array.isRequired
+    answerInfo: PropTypes.object.isRequired
 }
 
 export default AnswerInfo

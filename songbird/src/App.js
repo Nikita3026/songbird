@@ -36,7 +36,6 @@ export class App extends Component {
         this.setState({
           currentPageNumber: newPageNumber
         });
-        this.changeUserAnswerStatus();
       }
       else this.changeNotificationNeed(true);
 
@@ -50,6 +49,7 @@ export class App extends Component {
         this.changeNextLevelButtonActivity();
         this.changeDisabledStatusOfAnswers();
         this.changeOpenRightAnswerStatus();
+        this.changeUserAnswerStatus();
       }
 
   }

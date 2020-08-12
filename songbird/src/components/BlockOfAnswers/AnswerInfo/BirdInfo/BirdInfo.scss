@@ -8,6 +8,7 @@
         .bird-info-image {
             width:200px;
             height:155px;
+            border-radius:10px;
         }
         .short-text-info {
             padding-top:0.3rem;
@@ -29,11 +30,89 @@
                 width:100%;
                 height:2.5rem;
             }
+            .rhap_container {
+                padding-top:0;
+                padding-bottom:5px;
+                .rhap_controls-section {
+                 margin-right:0;
+
+                  .rhap_play-pause-button {
+                    font-size:45px;
+                    height:45px;
+                    width:45px;
+                  }
+                  .rhap_volume-controls {
+                    width:60px;
+                  }
+                }
+                .rhap_progress-section {
+                  .rhap_time {
+                    font-size:12px;
+                  }
+                  .rhap_progress-container {
+                      margin-left:7px;
+                      margin-right:7px;
+                    .rhap_progress-indicator {
+                        width:15px;
+                        height:15px;
+                        top:-5px;
+                        margin-left:-2px;
+                    }
+                    .rhap_progress-filled {
+                      background:$second-color !important;
+                    }
+                  }
+
+                }
+              }
         }
     }
     .bird-detailed-info {
         font-size:16px;
         line-height: 1.4rem;
-        margin-top:1.3rem;
+
     }
+}
+
+@media(max-width:991px) {
+    .bird-info-container {
+        .bird-short-info {
+            flex-direction: column;
+            align-items:center;
+           /*  align-items: center;
+            text-align: center; */
+            .bird-info-image {
+              margin-bottom:2rem;
+            }
+            .short-text-info {
+                width:100%;
+                margin-left:0;
+            }
+        }
+    }
+}
+
+@media(max-width:767px) {
+    .bird-info-container {
+        .bird-short-info {
+            text-align: center;
+        }}
+}
+
+@media(max-width:571px) {
+    .bird-info-container {
+        .bird-short-info {
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            .bird-info-image {
+              margin-bottom:2rem;
+            }
+            .short-text-info {
+                width:100%;
+                margin-left:0;
+            }
+        }
+    }
+
 }

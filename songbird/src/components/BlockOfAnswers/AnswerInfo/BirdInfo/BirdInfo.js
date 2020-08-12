@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import './BirdInfo.scss';
-import birdImage from '../../../../assets/img/defaultBirdImage.png';
 import Player from '../../../AudioPlayer/AudioPlayer';
 
 export class BirdInfo extends Component {
@@ -25,7 +24,7 @@ export class BirdInfo extends Component {
 }
 
 BirdInfo.propTypes = {
-    answerInfo: PropTypes.array.isRequired
+    answerInfo: PropTypes.object.isRequired
 }
 
 export default BirdInfo;

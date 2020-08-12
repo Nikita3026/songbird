@@ -24,7 +24,7 @@ export class BlockOfAnswers extends Component {
         this.state = {
             arrayOfAnswersSound:[],
             arrayOfAnswersImages:[],
-            answerInfo:[]
+            answerInfo:{}
         }
     }
 
@@ -54,7 +54,10 @@ export class BlockOfAnswers extends Component {
             }
             this.changeAnswerInfo(peopleAnswer);
             indicator.classList.add(classForIndicator);
-            if(this.counterOfClicks === 1) this.props.changeUserAnswerStatus();
+            if(this.counterOfClicks === 1) {
+                this.props.changeUserAnswerStatus();
+
+            }
         }
     }
 
@@ -69,6 +72,13 @@ export class BlockOfAnswers extends Component {
             arrayOfAnswersSound: newSoundsArray,
             arrayOfAnswersImages: newImagesArray
         })
+    }
+
+    componentWillReceiveProps(newProps) {
+        if(newProps.didTheUserAnswer !== this.props.didTheUserAnswer
+            && newProps.didTheUserAnswer === false) {
+            this.counterOfClicks = 0;
+        }
     }
 
     render() {

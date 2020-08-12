@@ -9,24 +9,37 @@
     border-radius: 5px;
     margin-top:1.5rem;
     border:1px solid $border-color;
-    padding:1.3rem 1rem;
-    .question-image-container {
+    padding:1.3rem 4rem 1.3rem 1rem;
+   /*  .question-image-container {
         width:200px;
         height:155px;
         background-color: $color-for-blocks;
-        border-radius: 5px;
+        border-radius: 5px; */
         .question-image {
-            width:100%;
-            height:100%;
+            width:200px;
+            height:155px;
+            border-radius:10px;
         }
-    }
     .current-question-inner {
         margin-left:2.5rem;
-        width:74%;
+        width:100%;
         .bird-voice {
             width:100%;
             margin-top:1rem;
             height:2.5rem;
         }
+    }
+}
+
+@media(max-width:571px) {
+    .current-question {
+        flex-direction: column;
+        align-items: center;
+        .question-image {
+            margin-bottom:2rem;
+        }
+    }
+    .current-question-inner {
+        text-align: center;
     }
 }

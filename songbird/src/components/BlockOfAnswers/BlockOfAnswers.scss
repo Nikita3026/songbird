@@ -11,3 +11,10 @@
         background-color: $wrong-answer-color !important;
     }
 }
+
+
+@media(max-width:767px) {
+    .answer-block-container {
+        flex-direction: column;
+    }
+}

@@ -13,3 +13,25 @@
         line-height: 1rem;
     }
 }
+
+@media(max-width:1200px) {
+    .answer-info-container {
+        .initial-info {
+            font-size:17px;
+            line-height: 1rem;
+        }
+    }
+}
+
+@media(max-width:991px) {
+    .answer-info-container{
+        height: initial;
+    }
+}
+
+@media(max-width:767px) {
+    .answer-info-container{
+        width:100%;
+        align-items:center;
+    }
+}
