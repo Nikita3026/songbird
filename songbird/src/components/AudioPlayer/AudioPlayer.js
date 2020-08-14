@@ -10,6 +10,7 @@ const Player = (src) =>
     customAdditionalControls={[]}
     showJumpControls={false}
     layout="horizontal-reverse"
+    autoPlayAfterSrcChange = {false}
     />)
 ;
 

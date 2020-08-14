@@ -10,16 +10,11 @@
     margin-top:1.5rem;
     border:1px solid $border-color;
     padding:1.3rem 4rem 1.3rem 1rem;
-   /*  .question-image-container {
+    .question-image {
         width:200px;
         height:155px;
-        background-color: $color-for-blocks;
-        border-radius: 5px; */
-        .question-image {
-            width:200px;
-            height:155px;
-            border-radius:10px;
-        }
+        border-radius:10px;
+    }
     .current-question-inner {
         margin-left:2.5rem;
         width:100%;

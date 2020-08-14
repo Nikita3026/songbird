@@ -52,13 +52,12 @@ export class BlockOfAnswers extends Component {
                 this.pointsForCurrentRound--;
                 this.errorAudio.play();
             }
-            this.changeAnswerInfo(peopleAnswer);
             indicator.classList.add(classForIndicator);
             if(this.counterOfClicks === 1) {
                 this.props.changeUserAnswerStatus();
-
             }
         }
+        this.changeAnswerInfo(peopleAnswer);
     }
 
     changeAnswerInfo(newAnswerInfo) {
@@ -66,6 +65,7 @@ export class BlockOfAnswers extends Component {
             answerInfo:newAnswerInfo
         })
     }
+
 
     changeState(newSoundsArray, newImagesArray) {
         this.setState({
@@ -110,7 +110,7 @@ BlockOfAnswers.propTypes = {
     changeScore:PropTypes.func.isRequired,
     isItNeedToDisableAnswers: PropTypes.bool.isRequired,
     changeDisabledStatusOfAnswers: PropTypes.func.isRequired,
-    changeOpenRightAnswerStatus: PropTypes.func.isRequired
+    changeOpenRightAnswerStatus: PropTypes.func.isRequired,
 }
 
 export default BlockOfAnswers;

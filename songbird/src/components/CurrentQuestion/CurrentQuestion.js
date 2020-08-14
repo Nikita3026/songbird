@@ -6,11 +6,13 @@ import UnspokenWord from './UnspokenWord';
 import Player from '../AudioPlayer/AudioPlayer';
 
 export class CurrentQuestion extends Component {
-constructor(props) {
-    super(props);
-    this.renderMainBody = this.renderMainBody.bind(this);
-    this.renderImage = this.renderImage.bind(this);
-}
+    constructor(props) {
+        super(props);
+        this.renderMainBody = this.renderMainBody.bind(this);
+        this.renderImage = this.renderImage.bind(this);
+    }
+
+
 
     renderImage() {
         let imageSrc;
@@ -22,26 +24,23 @@ constructor(props) {
 
     renderMainBody() {
         if(this.props.rightAnswer !== null) {
-            const audioSrc = this.props.rightAnswer.audio;
+            this.audioSrc = this.props.rightAnswer.audio;
             return (<Fragment>
                  <div className = "current-question">
-              {/*   <div className = "question-image-container"> */}
-                    <this.renderImage/>
-              {/*   </div> */}
+                <this.renderImage/>
                 <div className = "current-question-inner">
                     <UnspokenWord
                         rightAnswer = {this.props.rightAnswer}
                         isItNeedToOpenRightAnswerInfo = {this.props.isItNeedToOpenRightAnswerInfo}
                     />
                     <hr color = "white"/>
-                    {Player(audioSrc)}
+                    {Player(this.audioSrc)}
                 </div>
             </div>
             </Fragment>)
         }
         return null;
     }
-
 
     render() {
         return (
