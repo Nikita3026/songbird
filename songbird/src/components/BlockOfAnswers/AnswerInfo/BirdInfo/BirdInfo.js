@@ -8,7 +8,7 @@ export class BirdInfo extends Component {
         return (
             <div className = "bird-info-container">
                 <div className = "bird-short-info">
-                    <img className = "bird-info-image" alt = "bird-info-image" src= {this.props.answerInfo.image}/>
+                    <img className = "bird-info-image" alt = "bird-info" src= {this.props.answerInfo.image}/>
                     <div className = "short-text-info">
                         <span className = "bird-name">{this.props.answerInfo.cyrillicName}</span>
                         <hr color = "white"/>

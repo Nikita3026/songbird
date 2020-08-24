@@ -12,8 +12,6 @@ export class CurrentQuestion extends Component {
         this.renderImage = this.renderImage.bind(this);
     }
 
-
-
     renderImage() {
         let imageSrc;
         if(this.props.isItNeedToOpenRightAnswerInfo){
@@ -34,7 +32,7 @@ export class CurrentQuestion extends Component {
                         isItNeedToOpenRightAnswerInfo = {this.props.isItNeedToOpenRightAnswerInfo}
                     />
                     <hr color = "white"/>
-                    {Player(this.audioSrc)}
+                    {Player(this.audioSrc, this.props.audioRef)}
                 </div>
             </div>
             </Fragment>)

@@ -42,6 +42,7 @@ export class BlockOfAnswers extends Component {
             if(peopleAnswer.cyrillicName === this.props.rightAnswer.cyrillicName) {
                 this.props.changeOpenRightAnswerStatus();
                 this.props.changeDisabledStatusOfAnswers();
+                this.props.audioRef.current.audio.current.pause()
                 classForIndicator = 'right-answer';
                 this.props.changeScore(this.pointsForCurrentRound);
                 this.pointsForCurrentRound = 5;
@@ -110,7 +111,7 @@ BlockOfAnswers.propTypes = {
     changeScore:PropTypes.func.isRequired,
     isItNeedToDisableAnswers: PropTypes.bool.isRequired,
     changeDisabledStatusOfAnswers: PropTypes.func.isRequired,
-    changeOpenRightAnswerStatus: PropTypes.func.isRequired,
+    changeOpenRightAnswerStatus: PropTypes.func.isRequired
 }
 
 export default BlockOfAnswers;

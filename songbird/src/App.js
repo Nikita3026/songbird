@@ -20,6 +20,8 @@ export class App extends Component {
       isItNeedToOpenRightAnswerInfo:false
     }
 
+    this.currentQuestionAudioRef = React.createRef();
+
     this.changePageNumber = this.changePageNumber.bind(this);
     this.setRightAnswer = this.setRightAnswer.bind(this);
     this.changeNextLevelButtonActivity = this.changeNextLevelButtonActivity.bind(this);
@@ -108,6 +110,7 @@ export class App extends Component {
         <CurrentQuestion
           rightAnswer = {this.state.rightAnswer}
           isItNeedToOpenRightAnswerInfo = {this.state.isItNeedToOpenRightAnswerInfo}
+          audioRef = {this.currentQuestionAudioRef}
         />
         <BlockOfAnswers
         currentPageNumber = {this.state.currentPageNumber}
@@ -120,6 +123,7 @@ export class App extends Component {
         isItNeedToDisableAnswers = {this.state.isItNeedToDisableAnswers}
         changeDisabledStatusOfAnswers = {this.changeDisabledStatusOfAnswers}
         changeOpenRightAnswerStatus = {this.changeOpenRightAnswerStatus}
+        audioRef = {this.currentQuestionAudioRef}
         />
         <NextLevelButton
         handleClick = {this.changePageNumber}
