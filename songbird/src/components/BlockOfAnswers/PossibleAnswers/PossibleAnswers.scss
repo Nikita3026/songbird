@@ -1,0 +1,50 @@
+@import '../../../values.scss';
+
+
+.possible-answers-container {
+    background-color: $color-for-blocks;
+    width:48.5%;
+    height:20rem;
+    border-radius: 5px;
+    margin-top:1.5rem;
+    border:1px solid $border-color;
+    .answer-option {
+        width:100%;
+        height:($possible-answers-block-height/6);
+        border-bottom:1px solid $border-color;
+        padding:1.3rem 1.3rem;
+        display:flex;
+        flex-direction: row;
+        align-items:center;
+        &:hover {
+            background-color: $border-color;
+            cursor: pointer;
+        }
+        .answer-indicator {
+            width:12px;
+            height:12px;
+            background-color: $border-color;
+            border-radius: 50%;
+        }
+        .answer-option-text {
+            font-size:20px;
+            margin-left:1rem;
+        }
+    }
+}
+
+@media(max-width:1200px) {
+    .possible-answers-container {
+    .answer-option {
+        .answer-option-text {
+            font-size:18px;
+        }
+    }
+    }
+}
+
+@media(max-width:767px) {
+    .possible-answers-container {
+        width:100%;
+    }
+}

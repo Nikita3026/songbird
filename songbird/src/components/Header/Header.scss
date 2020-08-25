@@ -1,0 +1,13 @@
+@import '~bootstrap/scss/bootstrap';
+@import '../../values.scss';
+
+
+.header {
+    background-color:$main-color;
+    .header-top {
+        display:flex;
+        justify-content: space-between;
+        align-items: center;
+        height:100px;
+    }
+}

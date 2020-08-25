@@ -1,0 +1,20 @@
+@import '../../values.scss';
+
+.answer-block-container {
+    display:flex;
+    justify-content: space-between;
+
+    .right-answer {
+        background-color:$right-answer-color !important;
+    }
+    .wrong-answer {
+        background-color: $wrong-answer-color !important;
+    }
+}
+
+
+@media(max-width:767px) {
+    .answer-block-container {
+        flex-direction: column;
+    }
+}

@@ -1,0 +1,18 @@
+@import '../../values.scss';
+
+.next-level-button {
+    width:100%;
+    background-color: $color-for-blocks;
+    margin-top:1.5rem;
+    line-height:1.4rem;
+    font-size:18px !important;
+    color:$text-color;
+    border:1px solid $border-color;
+    padding:0.5rem 0.5rem;
+    border-radius: 5px;
+    margin-bottom:1rem;
+}
+
+.active-button {
+    background-color: #4caf50 !important;
+}

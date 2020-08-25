@@ -1,0 +1,48 @@
+@import '../../values.scss';
+
+.rhap_container {
+  background-color: $color-for-blocks !important;
+  box-shadow:none !important;
+  padding-left:0 !important;
+  padding-right:0 !important;
+  &:focus {
+    outline: none !important;
+  }
+  :focus {
+    outline: none !important;
+  }
+
+  .rhap_controls-section {
+    flex:0 0;
+    flex-direction: column;
+
+    .rhap_play-pause-button {
+      font-size:45px;
+      height:45px;
+      width:45px;
+      svg {
+        color:$second-color !important;
+      }
+    }
+    .rhap_volume-controls {
+      width:75px;
+    }
+  }
+  .rhap_progress-section {
+    align-items:baseline;
+    padding-top:1rem;
+    .rhap_time {
+      color: $text-color !important;
+    }
+    .rhap_progress-container {
+      align-self: initial;
+      .rhap_progress-indicator {
+        background:$third-color !important;
+      }
+      .rhap_progress-filled {
+        background:$second-color !important;
+      }
+    }
+
+  }
+}
